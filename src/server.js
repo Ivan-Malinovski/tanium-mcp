@@ -4,10 +4,31 @@ import { GraphQLClient, gql } from "graphql-request";
 
 const TANIUM_API_URL = process.env.TANIUM_API_URL || "https://simcorp-api.cloud.tanium.com/plugin/products/gateway/graphql";
 
+function parseTaniumUrl(input) {
+  if (!input) return "https://simcorp-api.cloud.tanium.com/plugin/products/gateway/graphql";
+  
+  let url = input.trim();
+  
+  if (!url.includes("://")) {
+    url = "https://" + url;
+  }
+  
+  if (!url.includes("/plugin/products/gateway")) {
+    if (url.includes(".cloud.tanium.com")) {
+      url = url.replace(/\/$/, "") + "/plugin/products/gateway/graphql";
+    } else {
+      url = url.replace(/\/$/, "") + ".cloud.tanium.com/plugin/products/gateway/graphql";
+    }
+  }
+  
+  return url;
+}
+
 let authToken = "";
 
 function getClient(token) {
-  return new GraphQLClient(TANIUM_API_URL, {
+  const apiUrl = parseTaniumUrl(process.env.TANIUM_API_URL);
+  return new GraphQLClient(apiUrl, {
     headers: { Authorization: `Bearer ${token}` },
   });
 }
