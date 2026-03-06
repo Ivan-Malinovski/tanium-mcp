@@ -1,0 +1,31 @@
+trigger:
+  branches:
+    include:
+      - main
+  paths:
+    include:
+      - src/server.js
+      - package.json
+      - package-lock.json
+
+resources:
+  containers:
+    - containerApp: tanium-mcp
+      image: tanium-mcp:latest
+      name: tanium-mcp
+
+properties:
+  managedEnvironmentId: environment/tanium-mcp
+  configuration:
+    activeRevisionsMode: Single
+    ingress:
+      external: true
+      targetPort: 3000
+      transport: http
+  template:
+    containers:
+      - name: tanium-mcp
+        image: tanium-mcp:latest
+        resources:
+          cpu: 0.5
+          memory: 1Gi

@@ -1,0 +1,23 @@
+{
+  "name": "tanium-mcp",
+  "private": true,
+  "version": "1.0.0",
+  "main": "dist/server.js",
+  "type": "module",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/server.js"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.26.0",
+    "express": "^5.1.0",
+    "graphql": "^16.9.0",
+    "graphql-request": "^7.1.0",
+    "zod": "^3.24.0"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.0",
+    "@types/node": "^20.11.0",
+    "typescript": "^5.3.0"
+  }
+}

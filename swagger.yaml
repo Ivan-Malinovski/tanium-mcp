@@ -1,0 +1,26 @@
+swagger: '2.0'
+info:
+  title: Tanium_MCP
+  description: MCP server for Tanium endpoint management
+  version: 1.0.0
+host: your-tanium-server.example.com
+basePath: /
+schemes:
+  - https
+paths:
+  /mcp:
+    post:
+      responses:
+        '200':
+          description: Immediate Response
+      x-ms-agentic-protocol: mcp-streamable-1.0
+      operationId: InvokeServer
+      summary: Tanium_MCP
+      description: MCP server for Tanium endpoint management
+securityDefinitions:
+  api_key:
+    type: apiKey
+    in: header
+    name: Authorization
+security:
+  - api_key: []
