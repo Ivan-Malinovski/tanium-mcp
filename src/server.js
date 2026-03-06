@@ -2,8 +2,6 @@ import express from "express";
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { GraphQLClient, gql } from "graphql-request";
 
-const TANIUM_API_URL = process.env.TANIUM_API_URL || "https://simcorp-api.cloud.tanium.com/plugin/products/gateway/graphql";
-
 function parseTaniumUrl(input) {
   if (!input) return "https://<company>-api.cloud.tanium.com/plugin/products/gateway/graphql";
   
