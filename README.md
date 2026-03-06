@@ -19,15 +19,15 @@ MCP (Model Context Protocol) server for Tanium endpoint management, compatible w
 ## Supported URL Formats
 
 ```bash
-# Just company name
-simcorp
+# Just company name (maps to <company>-api.cloud.tanium.com)
+mycompany
 
 # With or without https://
-https://simcorp-api.cloud.tanium.com
-simcorp-api.cloud.tanium.com
+https://mycompany-api.cloud.tanium.com
+mycompany-api.cloud.tanium.com
 
 # Full URL (as-is)
-https://simcorp-api.cloud.tanium.com/plugin/products/gateway/graphql
+https://mycompany-api.cloud.tanium.com/plugin/products/gateway/graphql
 ```
 
 ## Usage
@@ -44,17 +44,17 @@ npm start
 docker build -t tanium-mcp .
 
 # Run with environment variable
-docker run -p 3000:3000 -e TANIUM_API_URL=simcorp tanium-mcp
+docker run -p 3000:3000 -e TANIUM_API_URL=mycompany tanium-mcp
 
 # Or with full URL
-docker run -p 3000:3000 -e TANIUM_API_URL=https://simcorp-api.cloud.tanium.com tanium-mcp
+docker run -p 3000:3000 -e TANIUM_API_URL=https://mycompany-api.cloud.tanium.com tanium-mcp
 ```
 
 ### Environment Variables
 
 | Variable | Description | Default |
 |----------|-------------|---------|
-| `TANIUM_API_URL` | Tanium API URL (see formats above) | `https://simcorp-api.cloud.tanium.com/plugin/products/gateway/graphql` |
+| `TANIUM_API_URL` | Tanium API URL (see formats above) | `https://<company>-api.cloud.tanium.com/plugin/products/gateway/graphql` |
 | `PORT` | HTTP server port | `3000` |
 
 ## API
